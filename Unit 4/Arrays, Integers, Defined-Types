@@ -1,0 +1,59 @@
+//ARRAYS
+dcl array(n) fixed bin(31)     //initialize array, size n (upper bound), 1 indexed array (index 1-12)
+                              //Can explicitly define lower bound, array(2:12) --> (index 2-12)
+init(0, 1, 2, 3);             //init keyword initialized array with values 
+
+//INTEGERS
+fixed bin(31) -> 4 bytes of storage //Here the 31 is the precision, i.e 31 bits for value, 1 bit for sign
+                                    //fixed differentiates vs float
+fixed bin(7)  --> char 
+fixed bin(15) --> short
+fixed bin(31) --> int
+fixed bin(63) --> long int
+
+//Can declare as unsigned, or signed, but signed is default i.e
+unsigned fixed bin(8) --> unsigned char
+signed fixed bin(7)   --> signed char
+
+//Keywords can technically be in any order (obviously use the best for readability)
+fixed bin(7)
+fixed(7) bin 
+bin fixed(7) 
+signed bin fixed(7)
+
+
+//USER-DEFINED TYPES
+define alias
+  ushort unsigned fixed bin(16);     //ushort is the type-name
+xdefine alias
+  ushort unsigned fixed bin(16);    //Typically in "header files/include files"
+                                    //Lets you not worry about re-defining
+dcl leap(12)
+  type ushort
+  init(0, 1, 2, 3);
+
+//In C size_t = PL/I __unsigned_int
+
+
+
+
+
+//Calculating a Julian day value
+
+julian: package exports( julian_day );
+
+  dcl isleap  ext entry( fixed bin(31) byvalue ) returns( bit(1) byvalue);
+
+  dcl nonleap(12) fixed bin(31) init( 0,31,59,90,120,151,181,212,243,273,304,334 );
+  dcl leap(12) fixed bin(31) init( 0,31,60,91,121,152,182,213,244,274,305,355 );
+
+  julian_day:
+    proc( year, month, day ) returns( fixed bin(31) byvalue ) options( byvalue );
+    dcl year      fixed bin(31);
+    dcl month     fixed bin(31);
+    dcl day       fixed bin(31);
+    if isleap(year) then
+      return( leap(month) + day );
+    else
+      return( nonleap(month) + day);
+  end;
