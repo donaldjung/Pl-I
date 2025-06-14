@@ -1,0 +1,31 @@
+
+//PACKAGE STATEMENT 
+//First statement in source should be package statement
+//Each package statement should have matching end statement 
+//No statements can follow the Package End statement 
+
+//PROCEDURE STATEMENT
+//If you want more 'sister' procedure, enclose it in the package statement 
+//'sister' procedure can share declarations
+//Can choose which procedures will be visable outside package 
+
+//***You can have no package statement if all code is done in one procedure, but this isn't done in
+//***production, rather making quick code. 
+//All executable code must be enclosed by a procedure-end group, similar to {} in C
+//Name of function defined by label (sample: ) on procedure statement
+
+//MAIN FUNCTIONS
+//The options( main ) clause idntifies this procedure as the main
+//ONLY ONE procedure can specify options( main )
+
+//END STATEMENT
+//Can include the name of procedure it closes (also true for package statement)
+//Good programming will include names for end statements to help match end statements with proc/pack
+
+ hello: package;
+  ... 
+    sample:
+      procedure options( main );
+      ...
+      end sample;
+  end;
