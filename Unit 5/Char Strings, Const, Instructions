@@ -1,0 +1,37 @@
+//STRINGS
+
+//FIXED LENGTH STRINGS
+//Must have length specified in declaration or indirectly
+//Length * means length passed in a 'hidden' descriptor and could be any non-negative value.
+
+//VARIABLE-LENGTH STRINGS
+//Contain bytes that hold the length of the string
+//Varying & Varying4, length is in 2-byte or 4-byte prefix
+//Varyingz, string ends with a byte with value 0x0 and length is number of bytes before that byte 
+
+//CHARACTER STRING CONSTANTS 
+//Strings either enclosed in quotation marks or apostraphes 
+//The attributes are
+    //char(n) nonvarying where n is the number of char between the quotation marks
+    //To delimit an apostraphe/quotation, double it, i.e 'What''s' --> CHAR(5) NONVARYING
+    //Can concatonate with || --> 'Hello ' || 'World!'
+//Checking Date Pattern
+
+
+validpat: package exports( validpat );
+  dcl patterns(6) char(10) varying static init(                              //strings varying length 0-10
+    'YYYYMMDD','YYYY/MM/DD','YYYYMMMDD','YYYYMmmDD','YYYYDDD','YYYYMM' );
+
+  validpat: proc( result, test ) returns( fixed bin(31) byvalue);
+
+    dcl result    char(1) byaddr outonly;                                    //type char, length 1
+    dcl test      char(*) nonvarying byaddr inonly;
+    dcl jx        fixed bin(31);
+
+    do jx = lbound(patterns) to hbound(patterns);
+      if test = patterns(jx) then
+        do; result = 'Y'; return; end;
+      else;  
+    end;
+    result = 'N'; return;
+  end;
