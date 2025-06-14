@@ -1,16 +1,11 @@
 //Booleans, If, Select
 
-// PL/I has no == operator, thus = is overloaded to work for both assignment and comparisons
 
-//Type bit can be broken into readable "nibbles" or "bytes", '0101_0011'b = '01010011'b
-//Can also specify in hex with bx/b4 suffix, 'A5'bx = '1010_0101'b 
-
-//IF STATEMENTS
-//An if statement comparison yields an expressing having type bit(1)
 
 //COMPARISON OPERATORS 
-//  ( <, <=, >, >= )
-// NOT <>, ^=
+// PL/I has no == operator, thus = is overloaded to work for both assignment and comparisons
+// OTHER OPERATORS ( <, <=, >, >= )
+// NOT EQUAL <>, ^=
 //[NO PRECEDENCE, BIT STRING OPERATORS, YIELD BIT VALUE EQUAL IN LENGTH TO THE LONGER OF 2 OPERANDS]
 //[BY EXTENDING THE SHORTER ON THE RIGHT WITH 0 BITS]
 //[WHEN USED IN A LOGICAL SETTING, SHORT-CIRCUIT]
@@ -18,6 +13,31 @@
 // OR | 
 // NOT-INFIX oper1 ^ oper2 is equivalent to XOR
 // NOT-PREFIX ^oper1 flips all bits 
+
+//TYPE BIT
+//Type bit can be broken into readable "nibbles" or "bytes", '0101_0011'b = '01010011'b
+//Can also specify in hex with bx/b4 suffix, 'A5'bx = '1010_0101'b 
+
+//IF STATEMENTS
+//An if statement comparison yields an expressing having type bit(1)
+//Parenthesis around test expression not required but can use them
+//Must be a "then" keyword after the test expression 
+  //Then and Else keywords must be followed by a single statement
+  //Can be NULL statemnet ( ; )
+  //Can be do-end; group
+
+//SELECT STATEMENTS
+  select;
+    when ( result < 0 )
+      do; 
+      ...
+      end;
+    when ( result > 0 )
+      do; 
+      ...
+      end;
+    otherwise;    //optional, but if none of the when options yield true, exception raised
+  end;
 
 
 //Testing for Leap Years
