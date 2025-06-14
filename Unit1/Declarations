@@ -1,0 +1,19 @@
+//DECLARE STATEMENTS
+//Used like #include stdio.h
+
+//Statement must start with keyword declare (ABREV: DCL)
+//After naming the function, specify various attributes that define aspects of functions interface
+//These attributes can be specified in any order, some are optional
+  //ENTRY: ONLY MANDATORY ATTRIBUTE, specifies puts is the name and parameters  
+  //RETURNS: specifies what will be returned , and how/if proc/function can be invoked
+  //OPTIONS: specifies aditional aspects of the functions interface  
+  //EXTERNAL: specifies a name the function has to callers 
+      //**This is important because if other languages try calling "puts" it will not be found
+      //**Since PL/I is case-insensitive and changed to "PUTS" in compiler. 
+      //**So declaring a lowercase name for other langauges to use the function. 
+//EXAMPLE
+  declare puts
+    entry( nonassignable char(*) varz byaddr )   //Declare a constant char by address
+    returns( optional fixed bin(31) byvalue )    //Optional return val, integer by value
+    options( nosdescriptor )                     //Only address passed to func
+    external('puts');                            //Declare lower-case name for other lang to call
