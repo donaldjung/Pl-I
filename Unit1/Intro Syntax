@@ -1,0 +1,25 @@
+//Intro syntax 
+
+//Inline comments /* BLOCK*/
+/* source on cols 2-72 unless defined in compiler
+    NOT case sensitive, in compiler all made uppercase not enclosed in string delimiters
+    Code onsists mainly of keywords, identifiers, and literals
+    PL/I has no reserved keywords, future enhancements will not break code
+ABBREVIATED KEYWORDS:
+PROC=PROCEDURE,DCL=DECLARE,EXT=EXTERNAL,CHAR=CHARACTER,BIN=BINARY,DEC=DECIMAL,PTR=POINTER
+VAR=VARYING,VARZ=VARINGZ
+*/
+
+//Hello world
+
+  hello: package; //statemnets end with a semi-colon
+    declare puts
+      entry ( nonassignable char(*) varz byaddr )
+      returns (optional fixed bin(31) byvalue )
+      options( nodescriptor)
+      external('puts');
+  
+    sample: procedure options( main);
+      call puts("Hello,World!");
+    end sample;
+  end;
