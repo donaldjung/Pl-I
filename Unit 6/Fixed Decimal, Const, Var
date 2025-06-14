@@ -1,0 +1,40 @@
+//FIXED DECIMAL CONSTANTS AND VARIABLES
+
+//FIXED DECIMAL CONSTANTS
+//A fixed decimal constant is a literal containing a sequence of p digits with q digits after a decimal
+        fixed dec(p,q)
+  12 is fixed dec(2,0)
+ .05 is fixed dec(2,2)    //Can use _ to help readability i.e 123_456_789 = 123456789
+
+//FIXED DECIMAL VARIABLES
+//Declared with type fixed dec
+//In storage a fixed dec vairable has 2 digits per nibble, rightmost nibble is C or D (neg var)
+  100C = 100
+  100D = -100
+
+//P must be between 0 and 31, this is the precision
+//Q must be btween 0 and p, this is the scale factor (decimals)
+fixed dec(p,q) 
+
+//In storage 12345C and 123.45C is the same, but the scale factor adjusts via multiply 10^(-q)
+
+//COMPOUND INTEREST CALCULATOR
+
+calc:  proc options( main );
+  dcl amount  fixed dec(15,05);
+  dcl years   fixed dec(7);
+  dcl jx      fixed bin(31);
+  dcl kx      fixed bin(31);
+
+  years = 10;
+  amount = 1234;    // 00 00 00 12 34 00 00 0C --> trailing 0's decimal
+
+
+  do jx = 1 to years;
+    do kx = 1 to 12;                  //Here kx is bin(31), 12 is dec(2,0) compare works implicitly b/t types
+      amount += (.05/12) * amount;
+    end;
+  end;
+  put skip list( amount );
+  put skip list( round(amount,2) );
+end;
