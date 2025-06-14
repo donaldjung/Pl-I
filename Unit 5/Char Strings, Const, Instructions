@@ -14,9 +14,11 @@
 //The attributes are
     //char(n) nonvarying where n is the number of char between the quotation marks
     //To delimit an apostraphe/quotation, double it, i.e 'What''s' --> CHAR(5) NONVARYING
-    //Can concatonate with || --> 'Hello ' || 'World!'
-//Checking Date Pattern
 
+//Can concatonate variables or constants with || --> 'Hello ' || 'World!'
+
+
+//Checking Date Pattern
 
 validpat: package exports( validpat );
   dcl patterns(6) char(10) varying static init(                              //strings varying length 0-10
