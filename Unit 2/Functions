@@ -1,0 +1,64 @@
+//FUNCTIONS
+//Name & parameters
+//Return attribute
+//Declarations
+//By default parameters are passed byaddr, unless specified byvalue
+//Functions with returns, MUST have a return statement
+
+//LOOPS
+//All loops start with DO keyword
+
+//PUT statement
+//PUT LIST : must be followed by one or more expressons
+             each expression converted to char if needed and concatonated 
+//PUT EDIT : like PUT LIST, but formatted, 
+//PUT DATA : print out a list of variables 
+  //SKIP keyword gives a newline character, the skip is added to the previous put statement
+
+//To print to file:
+  //put file( log ) list( 'return code=' || rc);
+
+// ***SUMMING VALUES i*(i+1)***
+
+//INVOKING THE FUNCTION
+  sample: package;
+  sample: proc options( main );
+    dcl sum fixed bin(31);
+    sum = addtwo( 3 );
+    put edit ( 'sum = ' || sum )          //convert sum to char, concat to 'sum =', 
+             ( a, f(10) );                // f(10), integer with 10 spaces, leading 0 blanked
+                                          //write to sysprint
+  end;
+
+//FUNCTION i*(i+1)
+  addtwo: proc( limit )                   //Func name and param name
+    returns( byvalue fixed bin(31) );     //Return type integer passed byvalue
+
+    dcl limit fixed bin(31) byvalue;      //Parameter limit type as integer, passed byvalue
+    dcl sum   fixed bin(31);              //Initialize sum variable as integer
+    dcl jx    fixed bin(31);              //Initialize jx variable as integer
+  
+    sum = 0;                //Assign 0 to sum
+    do jx = 1 to limit;     //Loop & assign 1 to jx, loop until limit
+      sum += jx*(jx+1);         //Processing statement/calculation
+    end;                    //End of Loop
+    return( sum );              //Return Statement 
+  end;                          //END statement 
+
+
+
+//Decrementing loop
+  do jx = limit to 1 by -1;
+    sum += jx*(jx+1);
+  end;
+
+//INVOKING THE FUNCTION
+
+
+
+
+
+
+
+
+
