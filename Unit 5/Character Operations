@@ -1,0 +1,58 @@
+//COMPARISONS
+//String comparisons are of the underlying byte value
+//ASCII different than EBCDIC
+//Shorter strings are extended with blanks 
+
+//ASSIGNMENTS
+//If source is longer than the max length of target, source is truncated
+//If target is declared as varying or varying4, the length field is set
+//If target is declared as varyingz, 0x0 will be appended
+//If target is declared as nonvarying, blanks appended as needed
+
+//CONCATENATE-ASSIGN / APPEND
+str ||= str2;
+
+//BUILT IN FUNCTIONS
+//Do not need to be declared
+//Often have self-evident names and are frequently overloaded 
+//Some examples: 
+    length(str)            //return length
+    maxlength(str)         //return max length 
+    copy( 'a',2 )          //return n copies of str
+    hex( str )             //returns str in hex 
+    substr( str, c, n )    //return substring of str at char c for n characters 
+    trim( str )            //trim leading/trailing blanks
+
+//returns 0 if not found 
+    index(str1, str2 )     //finds first occurence of entire string str2 in str1
+    search(str1, str2 )    //finds first character in str1 that is in str2 
+    verify(str1, str2 )    //finds first character in x that is not in y 
+    indexr, searchr, verifyr //does the same but starts from the right 
+
+//BIT VARIABLES 
+//nonvarying, varying and varying4 attributes are all valid for bit variables
+//varyingz is not
+//length is number of bits 
+
+//UTF variables
+//You can declare string variables with type uchar or wchar
+//Type uchar holds UTF-8 and wchar UTF-16
+//Length is number of UTF-8 or UTF-16 "characters" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
