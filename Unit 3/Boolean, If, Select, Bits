@@ -1,0 +1,40 @@
+//Booleans, If, Select
+
+// PL/I has no == operator, thus = is overloaded to work for both assignment and comparisons
+
+//Type bit can be broken into readable "nibbles" or "bytes", '0101_0011'b = '01010011'b
+//Can also specify in hex with bx/b4 suffix, 'A5'bx = '1010_0101'b 
+
+//IF STATEMENTS
+//An if statement comparison yields an expressing having type bit(1)
+
+//COMPARISON OPERATORS 
+//  ( <, <=, >, >= )
+// NOT <>, ^=
+//[NO PRECEDENCE, BIT STRING OPERATORS, YIELD BIT VALUE EQUAL IN LENGTH TO THE LONGER OF 2 OPERANDS]
+//[BY EXTENDING THE SHORTER ON THE RIGHT WITH 0 BITS]
+//[WHEN USED IN A LOGICAL SETTING, SHORT-CIRCUIT]
+// AND &
+// OR | 
+// NOT-INFIX oper1 ^ oper2 is equivalent to XOR
+// NOT-PREFIX ^oper1 flips all bits 
+
+
+//Testing for Leap Years
+
+isleap:  proc( year )            //Function Name & Parameter 
+  returns( bit(1) byvalue );     //Function Returns type bit, passed byvalue
+                                  
+  dcl year  fixed bin(31) byvalue;    //declare parameter year, type integer, passed byvalue
+
+  if rem( year, 4 ) = 0 then          //if remainder year/4 equals 0...multiple of 4
+    if rem( year, 100 ) = 0 then      //if remainder year/100 equals 0...multiple of 100
+      if rem( year, 400 ) = 0 then    //if remainder year/400 equals 0...multiple of 400
+        return( '1'b );              //return 1...multiple of 4 & 100 & 400
+      else
+        return( '0'b );              //return 0...multiple of 4 & 100 not 400
+    else
+      return( '1'b );                //return 1...multiple of 4 not 100
+  else
+    return( '0'b );                  //return 0...not multiple of 4 
+end;
