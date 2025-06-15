@@ -18,4 +18,38 @@
     P = 1 + p1 + p2 
 
 //Divide 
+    An option defines N as 15 or 31 
+    Q = N-p1+q1-q2
+    P = N 
+
+
+//BUILT IN ARITHMETIC FUNCTIONS 
+  Where x = fixed dec operand1
+        y = fixed dec operant2
+        p = precision
+        q = scale factor 
+  ADD(X,Y,P,Q)
+  MULTIPLY(X,Y,P,Q)
+  DIVIDE(X,Y,P,Q) 
+
+*** CAN RAISE EXCEPTIONS DURING TRUNCATION, OVERFLOWS, ETC. ***
+
+//COMPOUND ASSIGNMENTS
++=
+*=
+
+//USEFUL DECIMAL BUILT-IN FUNCTIONS 
+ABS(X)
+MAX(X1,X2,...,XN) 
+MIN(...)
+CEIL(X),FLOOR(X),TRUNC(X)
+SIGN(X)
+REM(X,Y)
+MOD(X,Y)
+
+//ROUNDING BUILT-IN FUNCTIONS
+//Round at the n digit 
+ROUNDTOEVEN(X,N)          //aka bankers rounding 
+ROUNDAWAYFROMZERO(X,N)
+
 
