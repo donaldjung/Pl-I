@@ -1,0 +1,40 @@
+//BASED STRUCTURES
+  You can declare structures as based
+  This mean the storage has been allocated elsewhere
+  But you must then refer to the structure elements via pointers
+
+
+//POINTERS
+  A pointer is simply anotehr variable
+  It can be a structure member(element_forward), a scalar (next), or a member of an array
+  You deference a pointer via the -> symbol to a based variable 
+        ex. next->element_value;
+            next-element_forward;
+  You can add integer expression to a pointer (adds number of bytes)
+  You do not need to cast them.
+
+  dcl
+    1 element based,
+      2 element_forward    pointer,
+      2 element_data,
+        3 element_value    fixed bin(31)
+
+/ADDR built-in function
+  addr( x )     //Get the address of a variable, assign address of storage to a pointer
+
+//ALLOCATE built-in function
+  allocate (abrev. aloc)      //Aquire storage from heap
+                              //Assign the address of that storage to a pointer
+    
+//ALLOCATE STATEMENT
+  Most prevelent way in PL/I to aquire storage and set a pointer 
+    Aquires storage from heap, then
+    Assigned address of storage to a pointer
+   ex. -->   dcl list pointer;
+              list = allocate( size(element) ); //Allocate storage for size(element), assign to list pointer
+
+              allocate element set( list );    //Allocate storage for element then assing to list var
+                                               //Compiler figures out the bytes 
+
+//POINTER 32/64 ARE 4/8 BYTES 
+
