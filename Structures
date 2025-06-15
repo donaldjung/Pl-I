@@ -1,0 +1,61 @@
+//DECLARING A STRUCTURE
+
+Structure is typically declared with level numbers used to "next" substructures
+The structure can contain nested structures like (element_data)
+Only the leaf elements (like element_forward and element_value) contain data attributes
+Newer way to declare structures are "type" structures
+
+dcl
+  1 element,
+    2 element_forward  pointer,
+    2 element_data union,
+      3 element_value  fixed bin(31),
+      3 element_bits   bit(32) aligned;
+
+
+//Unions can be defined by the attribute union after the name, or * for unnamed union 
+  Unions give you 2 different views of those bytes
+
+//Summing Values in a linked list
+
+//REFERRING TO AN ELEMENT IN A STRUCTURE
+
+Do not always need to be fully qualified
+But must be unambigious
+
+
+
+//Routine to sum the values in linked list
+
+  sumthem: proc( list ) returns(fixed bin(31) );
+
+  dcl list    pointer;
+  dcl total   fixed bin(31);
+  dcl next    pointer;
+
+  total = 0;
+  next = list;
+  do while( next <> sysnull() );
+    total += next->element_value;
+    next = next->element_forward;
+  end;
+  return( total );
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
