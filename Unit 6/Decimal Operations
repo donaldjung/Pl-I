@@ -1,0 +1,21 @@
+
+//For comparison, the smaller scaled decimal is converted to the higher scale decimal
+  1.0 compared to 1.0001 is convered to 1.000
+
+*** ALL ZEROS ARE EQUAL, 0.0, 0, -0, ALL ARE 0 *** 
+
+//For arithmetic, PL/I has precise rules to keep as many fractional digits as possible
+
+//Addition and Subtraction
+
+//The result P and Q are calculated by:
+      dec(p1,q1) + dec(p2,q2) 
+      Q = max(q1,q2)
+      P = 1 + max(p1-q1,p2-q2) + Q 
+
+//Multiplication
+    Q = q1 + q2
+    P = 1 + p1 + p2 
+
+//Divide 
+
