@@ -1,0 +1,19 @@
+//DO WHILE
+  Must have matching end statement
+  *You can use LEAVE statement to exit the loop or ITERATE statement to branch back to the do while
+  Condition Clause checked BEFORE each iteration
+
+//DO UNTIL
+  The loop gets run AT LEAST ONCE 
+  Condition Clause checked AFTER each iteration
+
+//CAN CONBINE DO WHILE UNTIL
+  Can even combine with iterative do loops
+  
+  example.
+  do jx = 1 to 20 
+     while( next <> sysnull() )
+     until( next = target);
+    total += next->element_value;
+    next = next->element_forward
+  end;
