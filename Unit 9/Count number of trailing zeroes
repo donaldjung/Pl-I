@@ -1,0 +1,15 @@
+
+ictz4: proc( x ) returns( fixed bin(31) byvalue );
+
+  dcl x    fixed bin(31) byvalue;
+  dcl n    fixed bin(31);
+
+  if x = 0 then return( 32);
+  n = 0;
+  if land( x, '0000ffff'xn ) = 0 then do; n = n + 16; x = isrl( x, 16 ); end;
+  if land( x, '000000ff'xn ) = 0 then do; n = n +  8; x = isrl( x, 16 ); end;
+  if land( x, '0000000f'xn ) = 0 then do; n = n +  4; x = isrl( x, 16 ); end;
+  if land( x, '00000003'xn ) = 0 then do; n = n +  2; x = isrl( x, 16 ); end;
+  if land( x, '00000001'xn ) = 0 then do; n = n +  1;                    end;
+  return( n );
+end;
