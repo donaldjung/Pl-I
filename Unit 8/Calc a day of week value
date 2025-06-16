@@ -1,0 +1,33 @@
+
+
+//Calcuating a day of week value
+  weekday: package;
+
+  define ordinal day (   
+    day_Monday,
+    day_Tuesday,
+    day_Wednesday,
+    day_Thursday,
+    day_Friday,
+    day_Saturday,
+    day_Sunday ) prec(15);
+
+  dcl base fixed bin(31) value( 115861 );    // = days('01011900','DDMMYYYY');
+
+  weekday: proc( testdate ) returns( ordinal day byvalue );
+  dcl testdate  char(8) inonly byaddr;
+  dcl elapsed   fixed bin(31);
+  dcl wday      type day;
+  elapsed = days( testdate, 'DDMMYYYY' ) - base;
+  select( mod( elapsed, 7 ) );
+    when( 0 ) wday = day_Monday;
+    when( 1 ) wday = day_Tuesday;
+    when( 2 ) wday = day_Wednesday;
+    when( 3 ) wday = day_Thursday;
+    when( 4 ) wday = day_Friday;
+    when( 5 ) wday = day_Saturday;
+    otherwise wday = day_Sunday;
+  end;
+  return( wday );
+end;
+
