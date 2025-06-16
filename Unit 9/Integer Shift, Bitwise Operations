@@ -1,0 +1,22 @@
+
+//INTEGER SHIFT OPERATORS
+  Shift right/left n bits
+  isrl( x, n )        //integer Shift right logical
+  isll( x, n )        //integer Shift left logical
+
+//INTEGER ROTATE OPERATORS
+  Rotate right/left n bits
+  irrl( x, n )        //integer Rotate right logical
+  irll( x, n )        //integer Rotate left logical
+
+//LEADING ZEROS
+  iciz( x )           //returns the count of leading zeroes in an integer 
+
+//INTEGER BINARY BITWISE OPERATORS
+  Only works on fixed binary values
+  iand( x, y )   //AND
+  ieor( x, y )   //XOR
+  ior( x, y )    //OR
+  inot( x )      //Unary NOT
+
+  
