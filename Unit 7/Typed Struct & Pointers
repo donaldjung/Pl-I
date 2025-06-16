@@ -1,0 +1,33 @@
+//DEFINE STRUCT
+  New to PL/I, can declare typed structures nad pointers in PL/I
+  Statement defines a structure type, and the handle attribute specifies a strongly typed pointer to such
+    a structure type
+
+//TYPED POINTER
+  HANDLE is a type pointer, oppossed to pointer which is not typed 
+//HANDLE AQUISITION
+  Get size of structure visa size type function,
+  then use alloc and bind to obtain storage for the struct, 
+  and then cast that address to a handle
+        **Simpler to just use the new type function**
+
+  dcl  next    handle t_element;
+  bytes = size(: t_element :) ;                 //Get sizeof struct 
+  next = bind(: t_element, alloc( bytes ) :);   //Allocate & cast to handle
+  next = new(: t_element :);                    //New type function
+
+//UNSPECIFIED STRUCTURE DEFINITIONS
+Can define an unspecified structure, then specify later.
+Useful when a structure definition contains a handle to a second structure that also contains a handle to the first.
+
+  Ommiting structure levels is not ommited 
+  Use => to dereference instead of ->
+
+define struct
+  1 t_element_data,
+    2 element_value    fixed bin(31); 
+
+define structure  
+  1 t_element,
+    2 element_forward    handle t_element,          //Defines element_forward as a type pointer (points to type t_element)
+    2 element_data       type t_element_data;       //Defines element_data as type t_element_data
