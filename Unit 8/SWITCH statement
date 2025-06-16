@@ -1,0 +1,31 @@
+//SWITCH STATEMENT
+  The when clause are 'case' clauses
+  The otherwise clause is the default
+   No explicit limit on number of when clauses in select
+
+  If there is no matching clause and no otherwise clause, error condition is raised 
+  Code does not flow through one when clause to the next
+  Leave statement is not required 
+      ***  No need for a break statement ***
+  When clauses don't need to be integer constants
+      They can be expressions that can be compared to the value of the select expression
+
+    More than one case clause can precede a set of statements i.e 
+          when( Sat, Sun ) weekend = '1'b
+
+  If using SELECT to test if a value is a member of a set,
+  you could replace with INLIST built-in function
+          if inlist( x, Sat, Sun ) then      //tests if its first arg is equal to any following args
+            weekend = '1'b                   //there must be atleast 2 args, max 511 args
+          else                               
+            weekend = '0'b
+
+select( mod( elapsed, 7 ) );
+  when( 0 ) wday = day_Monday;
+  when( 0 ) wday = day_Tuesday;
+  when( 0 ) wday = day_Wednesday;
+  when( 0 ) wday = day_Thursday;
+  when( 0 ) wday = day_Friday;
+  when( 0 ) wday = day_Saturday;
+  otherwise wday = day_sunday;
+end;
