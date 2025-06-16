@@ -1,0 +1,15 @@
+//REMAINDER BUILT-IN FUNCTION
+  Remainders can be negative
+
+  rem( x, y )
+  rem( 10, 8 ) = 2
+  rem( -10, 8 ) = -2
+
+//MOD BUILD-IN FUNCTION
+  Mod is never negative: it is the smallest non-negative value R such that (x - R) is exactly divisable  
+  by y
+  If x is non-negative and y is a constant power of 2, then the compiler will turn mod(x,y) into a faster
+  iand(x,y-1)
+  mod( x, y )
+  mod( 10, 8 ) = 2
+  mod( -10, 8 ) = 6
