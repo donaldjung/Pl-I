@@ -1,0 +1,26 @@
+//ENUMS
+  In PL/I a define ordinal statement creates an ENUM
+  An ordinal is strongly typed
+
+//DEFINING AN ENUM VALUE
+  By default an ordinal type is 0 and each subsequent value is one greater
+  You can specify explicit values but they must be strictly increasing
+  Unspecified values will be set to one greater than the previous
+
+//DEFINING AN ENUM'S SIZE
+  By default the size used to hold an ordinal is that of a signed fixed bin(p) variable where p
+  is big enough to hold all of its value
+  But you can explicitely specify its precision and/or whether it is signed.
+
+//DECLARING AN ORDINAL
+  You can declare a variable as having an ordinal type with either the ordinal or type attribute
+  followed by the name of the ordinal
+  You can assign such a variable only one of the named ordinals in its type set or another variable
+  of the same type
+
+//BUILT IN ORDINAL FUNCTIONS
+  wday = ORDINALSUCC( wday );           //get next value, sets wday to next day
+  put list( ORDINALNAME( wday ) );      //get ordinal name, displays 'DAY_TUESDAY'
+
+  wday = first(: day :) ;          //get first value in an ordinal type
+  wday = last(: day :) ;           //get last value in an ordinal type
