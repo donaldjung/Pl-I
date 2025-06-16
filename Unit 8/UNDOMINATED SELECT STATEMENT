@@ -1,0 +1,15 @@
+//UNDOMINATED SELECT STATEMENT
+
+  Good for 3 way branches
+  Good if part of binary search
+  
+
+EXAMPLE.
+  select;
+    when( a > 0 )
+      positives += 1;
+    when ( a < 0 )
+      negatives += 1;
+    otherwise
+      zeroes += 1;
+  end;
