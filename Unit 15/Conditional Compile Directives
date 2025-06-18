@@ -1,0 +1,27 @@
+//CONDITIONAL COMPILATION DIRECTIVES
+Used to choose what source code to compile
+
+  %if-%then-%else statement 
+    ***The source to be compiled in(or out) has to be enclosed in %do and %end statements
+      %if test = 1 %then %do;  
+        put skip list( "some text" );
+      %end
+
+// %SELECT STATEMENTS 
+    Instead of nesting %if statements you can use %select
+      May be dominated or undominated ( %select, %when(...)...)
+
+
+// %XDECLARE , exclusive declare
+  SYSPTRSIZE , check what addressing and define based on addressing mode 
+
+  %Do-%end, allows %leave and %iterate, can be nested 
+      *%do skip   //all code from a %do skip to %end will be ignored 
+                  //useful for commenting out code containing comments that you dont wish to delete
+
+
+//
+//
+//
+//
+//
