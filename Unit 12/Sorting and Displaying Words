@@ -1,0 +1,17 @@
+
+  Declare a function in PL/I
+  Specify by-value parameters in PL/I
+  Declare functio pointers in PL/I
+
+  //Sorting the parsed words
+
+  dcl table(100)   char(40) varying;  
+  dcl jx           fixed bin(31);
+  dcl words        fixed bin(31);
+
+  call qsort( addr(table), words table(1)), compare2 );
+  do jx = 1 to words;
+    display( table(jx) );
+  end;
+
+  
