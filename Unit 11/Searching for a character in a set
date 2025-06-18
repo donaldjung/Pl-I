@@ -1,0 +1,28 @@
+//SEARCHING FOR A CHARACTER IN A SET
+  In PL/I built in function search will find the first occurence in a string
+  of any character in a set -- starting at a specified index into the string
+
+  Here we look for the first occurence of any delimeters
+
+//SEARCHING FOR A CHARACTER NOT IN A SET
+  In PL/I the built in function VERIFY will find the first occurence
+  in a string of any character NOT in a set -- starting at specified index
+
+  next = search( source, ' ,.', start );
+  
+  Here we look for the first occurence of any character that is not one of the
+  delimiters in ' ,.'
+  
+  start = verify( source, ' ,.', next );
+
+//SPLICING A STRING OUT OF A LONGER STRING
+  The PL/I function substr will extract a substring from a larger string
+  at a specified index
+
+  Substring consists of either:
+    All the characters starting from the specified index
+    OR
+    A specified (here: next-start) number of chars starting from that index
+
+    table(words) = substr(source,start);            //substring from source, at "start" to end
+    table(words) = substr(source,start,next-start); //substring from source at "start" + length
