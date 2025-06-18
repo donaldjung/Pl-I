@@ -1,0 +1,25 @@
+//PARSING WORDS FROM TEXT
+    Parse and slice strings in PL/I
+    Enable safety checking in your code
+    Handle conditions in PL/I
+
+//Declares
+  dcl table(100)  char(40)  varying;
+  dcl jx          fixed bin(31);
+  dcl words       fixed bin(31);
+  dcl start       fixed bin(31);
+  dcl next        fixed bin(31);
+
+//FIND ALL WORDS IN A STRING
+  words = 0;
+  next = 1;
+  do until( next = 0 );
+    start = verify( source, ' ,.', next );
+    if start = 0 then leave;
+    next = search( source, ' ,.', start );
+    words +=1;
+    if next = 0 then
+      table(words) = substr( source, start );
+    else
+      table(words) = substr( source, start, next-start );
+  end;
