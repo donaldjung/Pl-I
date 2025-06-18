@@ -1,0 +1,20 @@
+//ARCHIMEDES APPROXIMATION TO PI
+//USING FLOATING-POINT 
+
+//PERIMETER OF POLYGONS THAT COME CLOSER AND CLOSER TO FORMING A CIRCLE
+
+
+ poly2pi: proc options(main);
+  dcl sides             fixed bin(63);
+  dcl squared_length    fixed dec(33);
+  dcl pi                float dec(16);
+  dcl jx                fixed bin(31);
+  squared_length = 2;
+  sides = 4;
+  do jx = 1 to 32;
+    pi = ( floatdec(sides) * sqrt( squared_length ) ) / 2;
+    display( char(jx) || char(pi) );
+    squared_length = 2 - 2 * sqrt( 1 - squared_length/4) ;
+    sides *= 2;
+  end;
+ end;
