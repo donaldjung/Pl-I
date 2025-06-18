@@ -1,0 +1,38 @@
+
+//FLOATING POINT DECLARES
+  Able to declare floating-point variables as binary or decimal
+  The precision indicates how many digits it will have if converted to decimal,
+  or character, and also its size.
+//FLOAT DECIMAL
+  1-6 single precision
+  7-16 double precision
+  17 <= quad precision 
+//FLOAT BINARY
+  1 <= precision <= 21     single precision
+  22 <= precision <= 53    double precision
+  54 <= precision          quad precision (long double)
+
+//PLATFORM REPRESENTATION 
+  z/OS used to only have hexadecimal float
+  Now supports IEEE binary float and IEEE decimal float standards
+  ***Differ in their base, (2, 10, 16 ==> binary, decimal, hexa floats)
+                                          Also exponent range
+
+
+//ARCHIMEDES APPROXIMATION TO PI
+//USING FLOATING-POINT 
+
+ poly2pi: proc options(main);
+  dcl sides             fixed bin(63);
+  dcl squared_length    fixed dec(33);
+  dcl pi                float dec(16);
+  dcl jx                fixed bin(31);
+  squared_length = 2;
+  sides = 4;
+  do jx = 1 to 32;
+    pi = ( floatdec(sides) * sqrt( squared_length ) ) / 2;
+    display( char(jx) || char(pi) );
+    squared_length = 2 - 2 * sqrt( 1 - squared_length/4) ;
+    sides *= 2;
+  end;
+ end;
