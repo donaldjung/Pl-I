@@ -1,0 +1,17 @@
+
+//BASED WITH REFER
+  A based structure in PL/I can use the REFER attribute to define an array
+  with non-constant bounds
+
+  The SIZE field is used only when the arrray is allocated
+
+  Any other references to the structure will use the LEN field to determine  
+  the current upper bound for the array
+
+  dcl
+    1 vector    based,
+      2 len     fixed bin(15),
+      2 array( size refer(len) ) fixed bin(31);
+
+ Have to add ALLOCATE statement after.                //allocate storage 
+ Have to add FREE statement after all moves made.     //free storage
