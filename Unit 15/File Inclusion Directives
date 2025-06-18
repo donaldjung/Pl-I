@@ -1,0 +1,14 @@
+//PREPROCESSOR VARIABLES
+
+//FILE INCLUSION DIRECTIVE
+  %INCLUDE filename;
+  %INCLUDE "filename.inc"   //absolute file name
+  %INCLUDE SYSLIB(MEMBER)   //  z/OS batch
+
+//  %XINCLUDE 
+    Exclusive, only include files NOT already included 
+
+//
+
+//
+  
