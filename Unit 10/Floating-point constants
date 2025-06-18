@@ -1,0 +1,26 @@
+
+In PL/I constant 3.1415 = fixed decimal constant 
+
+In PL/I a floating decimal constant MUST HAVE AN EXPONENT
+  3.1415e0             //single
+  3.141592e0           //double
+  3.141592654589793e0  //quad 
+****The number of digits p determines the size with the same rules
+    as for the precision of variables 
+
+You can explicity specify the size by using a different character
+  before the exponenet value
+
+  s = single precision     //3.1415s0
+  d = double preceision    //3.1415d00
+  q = quad precision       //3.1415q0
+
+//FLOAT BINARY CONSTANTS
+  Float binary constant is a sequence of bianry digits with a decimal
+  point AND an exponent with a suffix of B(or b)
+  Number of digits p determines the size
+***USE SPARINGLY, HARD TO READ/FIGURE OUT
+  11.0e0b    //float bin(3)
+             // = decimal 3
+  11.01e0b   //float bin(4)
+             // = decimal 3.25 
