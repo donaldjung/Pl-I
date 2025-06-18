@@ -1,0 +1,68 @@
+//ENABLING SAFETY CHECKING IN CODE
+
+  ex. 
+  If length of substr string is longer than 40, 
+  then the substring will be truncated
+
+  Even worse, if words is too large (>100),
+  then either assignment will overwrite storage
+
+  dcl table(100)    char(40) varying;    //char(40), if substr is longer than 40, truncated
+
+  if next = 0 then
+    table(words)                //if words > 100 will overwrite storage in table(101+)
+      = substr(source,start);
+  else
+    table(words)
+      = substr(source,start,next-start); 
+
+  //PL/I CONDITIONS, ADDRESSES THIS
+    PL/I defined various conditions that you can "enable" that will cause
+    the compiler to generate extra code to check the validity of your code.
+
+    It also defined conditions that are either:
+        Always enables (ex. endfile) or
+        Enabled by default (ex. zero-divide)
+
+  //STRINGSIZE - STRZ
+    Enabling STRINGSIZE will cause the compiler to  generate code to check
+    whether a soruce string is larger than its target  
+    If problem is found, raise the STRINGSIZE condition but continue with truncated assignment
+
+  //SUBSCRIPTRANGE - SUBRG
+    Generate extra code to check whether array reference uses valid subscripts
+    condition raise, will not load nor store into invalid reference
+
+  //ENABLING WITH PREFIX
+    Can enable one or more conditions for individual statement by adding 
+    parenthesized comma-seperated list of condition names
+      (subrg,strz): 
+        table(words) = substr(source,start);
+
+  //ENABLING WITH BLOCK PREFIX
+    Can enable one or more conditions for a procedure or begin block by adding
+    parenthesized comma-seperated list of condition names
+      (subrg,strz): 
+      test: proc options( main );
+        table(words) = substr(source,start);
+
+  //ENABLING WITH PREFIX COMPILER
+    *process prefix(subrg,strz);
+
+  //YOU CAN DISABLE A CONDITON
+    (nosubrg): 
+  Could make compiler generate faster code 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
