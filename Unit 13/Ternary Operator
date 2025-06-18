@@ -1,0 +1,9 @@
+//IFTHENELSE built-in function
+    col(1) = ifthenelse( count(1) >= jx,     //test condition
+                         tower(1,jx),        //return if true
+                         ' ' );              //return if false
+
+***OVERUSE CAN LEAD TO CODE THAT IS HARD TO UNDERSTAND AND MAINTAIN***
+
+//PL/I ARRAY STATEMENTS
+  
