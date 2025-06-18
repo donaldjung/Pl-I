@@ -1,0 +1,36 @@
+
+  //DEFAULT STORAGE CLASSES IN PL/I
+  EITHER STATIC OR AUTOMATIC
+  //PACKAGE-LEVEL STORAGE CLASSES
+  In PL/I, package-level variables (what C called file scope variables) default to static
+  //PROCEDURE-LEVEL STORAGE CLASSES 
+  Procedure level variables default to automatic (automatic storage)
+
+  //AUTOMATIC STORAGE
+  Can explicitly specify that a variable is to be in automatic storage,
+  with automatic attribute (auto)
+  You CANNOT specify auotmatic attribute on the package-level variable
+  Automatic must referred to storage inside a function and lives in the function
+
+  //CONSTANT STORAGE
+  Can specify a name having the VALUE attribute
+  Cannot specify as another storage attribute as welll
+  Compiler will decide if it assigns such a name to constant storage but,
+  you cannot take their storage
+
+  //STATIC STORAGE
+  You can explicity speciy that a variable i to be in static storage via 
+  STATIC attribute
+  Works on package-level variable OR,
+  procedure-level variable 
+  ***THE STATIC ATTRIBUTE SHOULD BE RESERVED FOR VARIABLES WOSE VALUES MUST 
+      BE RESERVED ACCROSS CALLS***
+      THIS IS BECAUSE ITS MAKES THE COMPILER LESS LIKELY TO ASSIGN VARIABLE TO REGISTER
+      CAUSING LESS EFFICIENT CODE 
+
+  //NON-ASSIGNABLE STATIC
+  If you want to take the address of a constant
+      Change the attribute value to init
+      Add the attributes nonasgn static
+  The compiler will then assign storage (read-only) to the constants
+  but flag any assignments/changes to it 
