@@ -1,0 +1,57 @@
+  %declare statement
+  Specifies a name that can hold a value
+
+  %deactivate statement 
+  Undefines macro
+
+  %activate 
+  reactivate the name and cause it to be replaced in the source
+
+  PL/I Macro Facility 
+  You must invoke the PL/I macro facility (aka macro preprocessor) for %dcl statements to be handled
+  You must invoke it for code containing any % statements other than
+      %include, %xinclude, %note and some printer control statements %print, %skip, %page, etc.
+      Invoked with *process pp(macro)
+
+  Macro variables have the attributes char by default or fixed
+  Variables with char attribute are initialized to '' (null) and have no max length
+  Variables with fixed attribute are initialized to 0, compiler option sets to decode(5) or bin(31)
+
+  Can specify initial values for PL/I macro using same syntax as normal variables
+  You can declare macro array  variables
+    %dcl count fixed init(10)
+    %dcl array(count) fixed init( 1, 2, 3, (*) 0 );
+
+  //MACRO STRING-HANDLING BUILT IN FUNCTIONS
+    Macro char expressions can use all PL/I string operators (and implicit fixed to char conversions)
+    Same with arithmetic 
+
+  COMMENT        
+  QUOTE 
+  COMPILEDATE
+  COMPILETIME
+
+  MDECK compiler option
+  Option will cause compiler to write the source after it has been preprocessed to a file
+  File could contain any text and need not even be valid PL/I
+    *process pp(macro) mdeck;   //Must start at line 1 of source 
+
+  //FUNCTION MACROS IN PL/I
+  You can define macro procedures like "normal" PL/I proc, but macro versions,
+    manipulate text arguments
+  To activate one, you must either explicitly declare it as an entry or name it in,
+    an activate statement
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
