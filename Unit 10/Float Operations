@@ -1,0 +1,35 @@
+//ARITHMETIC AND COMPARISON
+ PL/I supports using all the usual arithmetic and comparison operaters
+  with float operands
+
+  You can also perform exponentiation using the ** infix operator
+          x ** y    //x raised to the y power
+
+  //MATHEMATICAL FUNCTOINS
+    All the usual math built-in functions are supported:
+        - acos, asin, atan, cos, sin, tan, log, etc.
+
+    If arguments are constant the compiler will evaluate them,  
+    and you can use them to build named constants
+        squared_length = 2 - 2 * sqrt(1-squared_length/4);
+
+  //INQUIRY FUNCTIONS
+  Used to test to see if a value is a special float value
+    isnan( x )         //Not a Number (infinity)
+    maxexp( x )       //Maximum exponent that x can assume
+    huge( x )         //Biggest value the argument can assume
+    tiny( x )        //Smallest value the argument can assume
+                      *** NOT THE MOST NEGATIVE, CLOSEST TO 0 ***
+
+  //SECONDS
+  PL/I offers built-in functions that use or return a number of Lilian seconds
+  as an 8-byte floating point value
+  secs( '20180707' )
+  secstodate( '20230201', 'YYYYMMDD' )
+  daytosecs( n )
+  ****RECCOMENDED TO NOT USE THESE, MADE FOR COMPATABILITY***
+  ****PROBLEMS WITH USING FLOATING POINT FOR DECIMAL OPERATIONS***  
+      WILL CAUSE ROUNDING ERRORS
+
+  Use ther microsecs versions instead
+  ***THESE USE 8-BYTE INTEGERS AND AVOID PROBLEMS WITH DECIMAL ARITHMETIC & FLOAT***
