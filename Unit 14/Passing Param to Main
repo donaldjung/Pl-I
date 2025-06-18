@@ -1,0 +1,18 @@
+How to pass param to main in PL/I
+How to define based storage with non-constant extents
+PL/I functions useful in data-checking
+
+example
+  towers:
+    proc( parm ) options( main noexecops );    //NO EXECUTION TIME OPTIONS 
+    dcl parm       char(*) varying;
+
+    size = parm;        //compiler implicitly converts char data to integer format
+                        //ignores blanks 
+
+  //SPECIFYING MAIN PARAMETER
+      At most PL/I main can have 1 paramete
+      Parameter must have attributes char varying, 
+      length should be specified with an * 
+      The NOEXECOPS keyword should also be specified in options attribute,
+      on the main's procedure statement 
