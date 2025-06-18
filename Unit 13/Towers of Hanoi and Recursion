@@ -1,0 +1,60 @@
+  How to define recursive function
+  Default and explicit storage attributes
+  Ternary operator 
+
+  towers: package;
+    dcl size          fixed bin(31) value(4);
+    dcl alpha         char(*) value('abcdefghijklmnopqrstuvwxyz');
+    dcl movies        fixed bin(31);                                 //track moves
+    dcl count(3)      fixed bin(31);                                 //# rings
+    dcl tower(3,size) char(1);                            //2d array, index tower, rings
+
+  hanoi: proc( rings, from, using, to ) recursive;
+    dcl ( rings, from, using, to ) by value fixed bin(31);
+  
+    if rings > 1 then 
+      call hanoi( rings-1, from, to using);
+    call move_one_ring( to, from );
+    moves +=1;
+  
+    if rings > 1 then
+      call hanoi( rings-1, using, from, to);
+  end hanoi;
+
+  move_one_ring: proc( to, from ) options(inline);    //inline compiles function to function that called
+    dcl( to, from ) byvalue fixed bin(31);
+    count(to) +=1;
+    tower(to,count(to)) = tower(from,count(from));
+    count(from) -= 1;
+  end move_one_ring;
+
+towers: proc options(main);
+  dcl jx        fixed bin(31);
+  //set tower 1 to hold ---- a, b, c, d
+  count(1) = hbound(tower,2);
+  do jx = 1 to hbound(tower,2);
+    tower(1,jx) = substr(alpha,hbound(tower,2) - jx+1,1);
+  count(2) = 0;
+  count(3) = 0;
+  moves = 0;
+  //display initial tower contents
+  call display_towers;
+  //move the rings from tower 1 to tower 3 using tower 2 to help
+  call hanoi( hbound(tower,2) 1, 2, 3);
+  //display the final tower contents
+  call display_towers;
+
+  //display the number of moves (which should be 2**size-1)
+  put skip list( '' );
+  put skip list( 'number of moves = ' || trim(char(moves)) );
+end towers;
+
+
+
+
+
+
+
+
+
+
