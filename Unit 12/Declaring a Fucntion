@@ -1,0 +1,32 @@
+
+  In PL/I a name is declared as a FUNCTION by giving it,
+  the ENTRY  attribute
+    declare qsort external entry;
+
+  If it is another compilation unit or library, it needs the external (or ext)
+  attribute
+  These attributes can be sepcified in either order 
+
+  PL/I will uppercase all names 
+  External attribute can specify the function name (lowercase)
+      declare qsort ext('qsort') entry;      //The name that the linker/binder sees
+  Declare leaves the function un-protottyped, leads to errors 
+
+  //PROTOTYPE A FUNCTION
+    You must specify a parenthesized list of parameters after the entry keyword.
+    Best to indicate:
+      If a paremeter is expected to have a value when function invoked (inonly or inout)
+      If value may be changed by the invoked function (inout or outonly)
+
+    dcl noparms entry();                  //no parameters
+    dcl oneparm entry( fixed bin(31) );  //one parameter of fixed bin(31)
+    dcl threeparms
+      entry( fixed bin(31) inonly,        //
+             fixed bin(31) inout,         //
+             float bin(53) outonly );     //
+  //Must specify a return value otherwise void is assumed by default 
+  //Must have the type of the value & returns attribute for function 
+    dcl getcounter ext entry()
+        returns( fixed bin(31) );
+***PL/I has restrictions what can be returned, ex. arrays/struct are not allowed 
+  MUST BE A SCALER (pointer, value, etc.)
