@@ -1,0 +1,26 @@
+
+By default PL/I returns by reference/address
+ Only parameters passed by reference can be changed
+Therefore BYVALUE implies INONLY 
+  
+Function attribute byvalue 
+Function attribute byaddr    //explicit by address/reference parameter 
+  
+When invoking the function just pass the variables not the address',
+PL/I will automatically pass the addresses 
+
+By declaring a parameter as *, anything can be passed as the parameter 
+
+//REFERENCE OR VALUE OR RETURNS
+  PL/I only returns by value if specified 
+  By default the value is returned via a hidden pointer
+
+//Passing a function
+  dcl qsort ext('qsort')
+    entry( pointer byvalue,
+           type __signed_int byvalue,
+           type __signed_int byvalue,  
+           limited entry( pointer byvalue, pointer byvalue ) 
+            returns( byvalue fixed bin(31) ) byvalue ); 
+
+***SIDE NOTE THAT QUICKSORTX is a built in subroutine for quicksort***
