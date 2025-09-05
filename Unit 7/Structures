@@ -1,6 +1,6 @@
 //DECLARING A STRUCTURE
 
-Structure is typically declared with level numbers used to "next" substructures
+Structure is typically declared with level numbers used to "nest" substructures
 The structure can contain nested structures like (element_data)
 Only the leaf elements (like element_forward and element_value) contain data attributes
 Newer way to declare structures are "type" structures
